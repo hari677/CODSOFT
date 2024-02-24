@@ -2,7 +2,7 @@
 using namespace std;
 
 int main(){
-
+//NUMBER GUESSING GAME TASK 1
     int a;
     cout<<"ENTER A NUMBER BETWEEN 1 to 1000 : ";
     cin>>a;
