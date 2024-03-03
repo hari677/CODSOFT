@@ -1,7 +1,5 @@
-// C++ program to implement tic tac toe game
 #include <iostream>
 using namespace std;
-
 
 void tickboard(char board[3][3])
 {
@@ -43,14 +41,14 @@ int main()
 						{ ' ', ' ', ' ' } };
 	char player = 'X';
 	int row, col;
-	int turn; // Declare turn here
+	int turn = 0; // Declare and initialize turn here
 
 	cout << "Welcome to Tic-Tac-Toe!\n";
 
 	// Game loop
-	for (turn = 0; turn < 9; turn++) {
+	for (; turn < 9; turn++) {
 		// Draw the board
-		tickBoard(board);
+		tickboard(board);
 
 		// Prompt for valid input
 		while (true) {
@@ -58,8 +56,7 @@ int main()
 				<< ", Enter ROW (0-2) and column (0-2): ";
 			cin >> row >> col;
 
-			if (board[row][col] != ' ' || row < 0 || row > 2
-				|| col < 0 || col > 2) {
+			if (row < 0 || row > 2 || col < 0 || col > 2 || board[row][col] != ' ') {
 				cout << "Invalid move. Try again.\n";
 			}
 			else {
@@ -72,7 +69,7 @@ int main()
 
 		// Check for a win after making a move
 		if (checkWin(board, player)) {
-			drawBoard(board);
+			tickboard(board);
 			cout << "Player " << player << " wins!\n";
 			break; // Exit the loop after a win.
 		}
@@ -82,11 +79,10 @@ int main()
 	}
 
 	// End of the game
-	drawBoard(board);
+	tickboard(board);
 
 	// Check for a draw
-	if (turn == 9 && !checkWin(board, 'X')
-		&& !checkWin(board, 'O')) {
+	if (turn == 9 && !checkWin(board, 'X') && !checkWin(board, 'O')) {
 		cout << "It's a draw!\n";
 	}
 
